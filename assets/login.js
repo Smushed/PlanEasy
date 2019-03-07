@@ -4,13 +4,13 @@ var userList = {};
 var newUser = false;
 
 // Initialize Firebase
-var config = {
-    apiKey: "AIzaSyDO5T58hrlOuSJhKNvgOjeXnrvqWgT41MQ",
-    authDomain: "fralendar.firebaseapp.com",
-    databaseURL: "https://fralendar.firebaseio.com",
-    projectId: "fralendar",
-    storageBucket: "fralendar.appspot.com",
-    messagingSenderId: "391251924818"
+const config = {
+    apiKey: "AIzaSyBC-G9abqyig1BJzzECRkvpg4JIbjzKcsc",
+    authDomain: "connectwithfriends.firebaseapp.com",
+    databaseURL: "https://connectwithfriends.firebaseio.com",
+    projectId: "connectwithfriends",
+    storageBucket: "connectwithfriends.appspot.com",
+    messagingSenderId: "197051908706"
 };
 firebase.initializeApp(config);
 
@@ -128,16 +128,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
             getUserList();
         }
         //Shows the div of the login success box
-        $(".login-success").show();
-        $(".login-form").hide();
-        $(".eventDisplay").show();
-        //shows calendar
-        $(".calendar-display").show();
-        $("#calendar-card").show();
-        $("#fralendar-welcome").hide();
-        $("#fralendar-intro").hide();
-        $(".Calendar").show();
-        $(".eventbtn").show();
+        displayLoggedIn();
         //Displays the username on screen
         displayUserName();
         if (newUser === true) {
@@ -149,26 +140,42 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
             $(".calendar-display").hide();
         }
     } else {
-        //This runs when no user is logged in
-        console.log("Logged Out");
-        $(".login-success").hide();
-        $(".input-name-zip").hide();
-        $(".login-form").show();
-        //hide calendar on logout
-        $(".calendar-display").hide();
-        $(".eventDisplay").hide();
-        $(".eventDisplay").hide();
-        $("#calendar-card").hide();
-        $("#fralendar-welcome").show();
-        $("#fralendar-intro").show();
-        $(".Calendar").hide();
-        $(".eventbtn").hide();
+        displayLoggedOut();
         //Clears the user object to show that they logged out
         user = {};
         //This updates the text fields so if the user logs out the registers again it shows null
         clearNameDisplay();
     }
 });
+
+function displayLoggedIn() {
+    $(".login-success").show();
+    $(".login-form").hide();
+    $(".eventDisplay").show();
+    //shows calendar
+    $(".calendar-display").show();
+    $("#calendar-card").show();
+    $("#fralendar-welcome").hide();
+    $("#fralendar-intro").hide();
+    $(".Calendar").show();
+    $(".eventbtn").show();
+};
+
+function displayLoggedOut() {
+    //This runs when no user is logged in
+    $(".login-success").hide();
+    $(".input-name-zip").hide();
+    $(".login-form").show();
+    //hide calendar on logout
+    $(".calendar-display").hide();
+    $(".eventDisplay").hide();
+    $(".eventDisplay").hide();
+    $("#calendar-card").hide();
+    $("#fralendar-welcome").show();
+    $("#fralendar-intro").show();
+    $(".Calendar").hide();
+    $(".eventbtn").hide();
+};
 
 function getNameAndZip() {
     if (user.name === null || user.zip === null || user.name === undefined) {

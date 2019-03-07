@@ -33,12 +33,6 @@
   text-decoration: none;
   cursor: pointer;
 }
-.eventImg {
-  height: 200px;
-  width: 200px;
-  border: 2px black solid;
-  padding: 0;
-}
 #fralendar-welcome {
   width: 70%;
   margin: auto;
@@ -62,11 +56,6 @@
   width: 45%;
   float: left;
   margin-right: 25px;
-}
-.calendar-display {
-  background: lightblue;
-  margin-top: 5%;
-  border-radius: 4px;
 }
 .calendar-btn {
   width: 105px;
