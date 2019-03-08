@@ -4,57 +4,56 @@ let userFreeTime = {};
 
 // Array for getting current day and next 6 days
 const daysOfWeek = [
-    moment().format("dddd"),
-    moment().add(1, "days").format("dddd"),
-    moment().add(2, "days").format("dddd"),
-    moment().add(3, "days").format("dddd"),
-    moment().add(4, "days").format("dddd"),
+    moment().format(`dddd`),
+    moment().add(1, `days`).format(`dddd`),
+    moment().add(2, `days`).format(`dddd`),
+    moment().add(3, `days`).format(`dddd`),
+    moment().add(4, `days`).format(`dddd`),
 ];
 
 //array for getting current date and next 6 dates
 const dayNum = [
     moment().date(),
-    moment().add(1, "days").date(),
-    moment().add(2, "days").date(),
-    moment().add(3, "days").date(),
-    moment().add(4, "days").date(),
+    moment().add(1, `days`).date(),
+    moment().add(2, `days`).date(),
+    moment().add(3, `days`).date(),
+    moment().add(4, `days`).date(),
 ];
 
-const timeStamps = [6, 12, 18]
+const timeStamps = [6, 12, 18];
 
 // array for out button value names
-const timeOfDay = ["Morning", "Afternoon", "Night"]
+const timeOfDay = [`Morning`, `Afternoon`, `Night`];
 
 // creating a div to append all days to (Sunday-Saturday)
-const firstRowDiv = $("<div>")
-firstRowDiv.attr({ "id": "calanderWeek" })
-firstRowDiv.addClass("row")
+const firstRowDiv = $(`<div>`);
+firstRowDiv.addClass(`row`);
 
 // we have this slot because bootstrap requires 12 column slots (7 days * 1 slot each ) = 4 remaing slots
 firstRowDiv.prepend(`<div class="col-md-1"></div>`);
 
 // for loop to dynamically create the days along with any added attr
 for (let i = 0; i < daysOfWeek.length; i++) {
-    const dayDiv = $("<div>")
-    dayDiv.attr({ "id": daysOfWeek[i] })
-    dayDiv.addClass(["week", "text-center", "col-md-2"])
-    dayDiv.text(daysOfWeek[i])
+    const dayDiv = $("<div>");
+    dayDiv.addClass(["week", "text-center", "col-md-2"]);
+    dayDiv.text(daysOfWeek[i]);
 
     firstRowDiv.append(dayDiv);
-}
+};
+
 // Same as other div added above, we now have 12 column required per bootstrap
-firstRowDiv.append(`<div class="col-md-1"></div>`)
+firstRowDiv.append(`<div class="col-md-1"></div>`);
 
 // append this row to html doc
 $(".calendarHTML").append(firstRowDiv);
 
 // creating second row for our dates/buttons along with attr
-const secondRowDiv = $("<div>")
-secondRowDiv.attr({ "id": "secondRow" })
-secondRowDiv.addClass(["row", "text-center"])
+const secondRowDiv = $("<div>");
+secondRowDiv.attr({ "id": "secondRow" });
+secondRowDiv.addClass(["row", "text-center"]);
 
 // With 4 slot remaing in columns this div will be used for calendar purposes
-secondRowDiv.prepend(`<div class="col-md-1"></div>`)
+secondRowDiv.prepend(`<div class="col-md-1"></div>`);
 
 // Loop to dynamically create of dates
 
@@ -73,7 +72,6 @@ for (let j = 0; j < dayNum.length; j++) {
         // value: 0 initial starting value
         // data-unix: Specific date with specific time of day
         calendarItem.attr({
-            "id": daysOfWeek[j] + timeOfDay[k],
             "data-unix": moment().startOf("day").add(j, "days").add(timeStamps[k], "hours").format()
         });
         calendarItem.val(0)
@@ -91,44 +89,58 @@ eventRow.addClass(["row", "eventDisplay"]);
 secondRowDiv.append(`<div class="col-md-1"></div>`)
 
 //append to html doc
-$(".calendarHTML").append(secondRowDiv);
+$(`.calendarHTML`).append(secondRowDiv);
 
 // listener event for buttons 
 //TODO Start here. Not writing to firebase and the colors are all strange
-$(`body`).on("click", ".calendar-item", function () {
-    var value = $(this).val();
-    console.log(value)
+$(`body`).on(`click`, `.calendar-item`, function () {
+    const value = $(this).val();
     // changes value on button to "1" signifying they are available
-    if (value === "0") {
-        $(this).val("1")
-        $(this).removeClass("btn-danger")
-        $(this).addClass("btn-success");
+    if (value === `0`) {
+        $(this).val(`1`);
+        $(this).addClass(`chosen-time`);
+        $(this).removeClass(`blank-time`);
     }
-    // changes value on button to "0" or false signifying they are unavailable
-    if (value === "1") {
-        $(this).val("0")
-        $(this).removeClass("btn-success")
-        $(this).addClass("btn-danger")
-    }
+    // changes value on button to `0` or false signifying they are unavailable
+    if (value === `1`) {
+        $(this).val(`0`);
+        $(this).removeClass(`chosen-time`);
+        $(this).addClass(`blank-time`);
+
+    };
+
+    //Pulls the value and the ID from each button to be used in firebase
+    const chosenTime = $(this).val();
+
+    //This adds the time as the key in firebase
+    const attribute = $(this).attr(`data-unix`);
+    freetime[user.ID] = {};
+
+    //userFreeTime is currently a global variable
+    userFreeTime[attribute] = chosenTime;
+    freetime[user.ID] = userFreeTime;
+    firebase.database().ref(`/freetime/`).set(freetime);
+    $(".eventbtn").empty();
+    getUserFreeTimeArray();
 });
 
-const updateCalendar = () => {
-    for (let key in userFreeTime) {
-        if (userFreeTime[key] == 1) {
-            $(`.btn .btn-block .calendar-btn .` + key).val("1")
-            $(`.` + key).removeClass("btn-danger")
-            $(`.` + key).addClass("btn-success");
-        }
-    }
-}
+//TODO This is not working. Meant to show things users have already chosen
+// const updateCalendar = () => {
+//     for (let key in userFreeTime) {
+//         if (userFreeTime[key] == 1) {
+//             $(`.${key}`).val("1");
+//             $(`.` + key).addClass("chosen-time");
+//         };
+//     }
+// }
 
 //Gets the User Calendar when authstatechanges from the login page
 const getUserCalendar = () => {
-    firebase.database().ref(`/freetime/${user.ID}`).once("value").then(function (snap) {
+    firebase.database().ref(`/freetime/${user.ID}`).once(`value`).then(function (snap) {
         userFreeTime = {};
         userFreeTime = snap.val();
         getUserFreeTimeArray();
-        updateCalendar();
+        // updateCalendar();
     });
 };
 
@@ -145,18 +157,7 @@ firebase.database().ref("/freetime/").on("value", function (snap) {
     getUserFreeTimeArray();
 });
 
-$(".calendar-btn").on("click", function () {
-    //Pulls the value and the ID from each button to be used in firebase
-    const buttonTime = $(this).val();
-    //This adds the time as the key in firebase
-    const attribute = $(this).attr(`data-unix`);
-    freetime[user.ID] = {};
-    userFreeTime[attribute] = buttonTime;
-    freetime[user.ID] = userFreeTime;
-    firebase.database().ref(`/freetime/`).set(freetime);
-    $(".eventbtn").empty();
-    getUserFreeTimeArray();
-});
+
 
 //Reads the freetime object and checks if there are any times which line up
 const getUserFreeTimeArray = () => {
@@ -202,8 +203,8 @@ const getUserFreeTimeArray = () => {
                 const eventHour = friendFreeTimeArray[i].slice(11, 13);
                 const eventMin = friendFreeTimeArray[i].slice(14, 16);
 
-                eventBtn.text(`${eventMonth}/${eventDay} ${eventHour}:${eventMin}`)
-                $(".eventbtn").append(eventBtn)
+                eventBtn.text(`${eventMonth}/${eventDay} ${eventHour}:${eventMin}`);
+                $(".eventbtn").append(eventBtn);
             };
         };
     };
