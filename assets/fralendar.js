@@ -66,21 +66,21 @@ for (let j = 0; j < dayNum.length; j++) {
 
     //loop to generate the 3 buttons in our dates
     for (let k = 0; k < 3; k++) {
-        const btn = $("<button>");
-        btn.addClass(["btn", "btn-block", "calendar-btn"]);
+        const calendarItem = $("<div>");
+        calendarItem.addClass([`calendar-item`]);
         // Line will output
         // id : "Specific Day + Specific Time"
         // value: 0 initial starting value
         // data-unix: Specific date with specific time of day
-        btn.attr({
+        calendarItem.attr({
             "id": daysOfWeek[j] + timeOfDay[k],
-            "value": 0,
             "data-unix": moment().startOf("day").add(j, "days").add(timeStamps[k], "hours").format()
         });
+        calendarItem.val(0)
 
         // will display the time of day (Morning, Afternoon, Night)
-        btn.text(timeOfDay[k]);
-        dayOfTheWeek.append(btn);
+        calendarItem.text(timeOfDay[k]);
+        dayOfTheWeek.append(calendarItem);
     }
     secondRowDiv.append(dayOfTheWeek);
 }
@@ -94,8 +94,10 @@ secondRowDiv.append(`<div class="col-md-1"></div>`)
 $(".calendarHTML").append(secondRowDiv);
 
 // listener event for buttons 
-$(".calendar-btn").on("click", function () {
+//TODO Start here. Not writing to firebase and the colors are all strange
+$(`body`).on("click", ".calendar-item", function () {
     var value = $(this).val();
+    console.log(value)
     // changes value on button to "1" signifying they are available
     if (value === "0") {
         $(this).val("1")

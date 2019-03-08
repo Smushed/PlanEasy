@@ -2,6 +2,13 @@
   margin: 0;
   padding: 0;
 }
+body {
+  background: lightblue;
+}
+input {
+  border-radius: 5px;
+  width: 250px;
+}
 .modal {
   display: none;
   position: fixed;
@@ -45,15 +52,30 @@
 .welcome-message {
   margin-left: 20px;
   margin-bottom: 0;
+  margin-top: 12px;
   padding-left: 20px;
   padding-right: 25px;
   padding-bottom: 25px;
   padding-top: 15px;
   background: rgb(201, 219, 224);
-  border-radius: 2px;
+  border-radius: 3px;
+  float: left;
 }
 .location-display {
   width: 45%;
   float: left;
   margin-right: 25px;
+}
+.navbar {
+  display: none;
+  height: 10vh;
+  overflow: hidden;
+  background: white;
+}
+.logout {
+  margin-top: 30px;
+  margin-left: 10px;
+}
+.input-name-zip {
+  display: none;
 }

@@ -150,6 +150,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 function displayLoggedIn() {
     $(".login-success").show();
+    $(`.navbar`).show();
     $(".login-form").hide();
     $(".eventDisplay").show();
     //shows calendar
@@ -166,6 +167,7 @@ function displayLoggedOut() {
     $(".login-success").hide();
     $(".input-name-zip").hide();
     $(".login-form").show();
+    $(`.navbar`).hide();
     //hide calendar on logout
     $(".calendar-display").hide();
     $(".eventDisplay").hide();
