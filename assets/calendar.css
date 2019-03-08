@@ -1,0 +1,17 @@
+.calendar-display {
+    background: lightblue;
+    margin-top: 5%;
+    border-radius: 4px;
+}
+.eventImg {
+    height: 200px;
+    width: 200px;
+    border: 2px black solid;
+    padding: 0;
+}
+.calendar-btn {
+    width: 105px;
+}
+.SimilarFreeTime {
+    margin: 5px;
+}

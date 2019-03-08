@@ -1,17 +1,16 @@
 // need to adjust and add location
 
-var zip = 60614;
+const zip = 60614;
 var tmDateString = "";
 var tmDateString2 = "";
 var apiEvents = [];
 var apiVenueLocation = [];
 var CORS = "https://cors-anywhere.herokuapp.com/";
 // Api url - includes zip and date. date is set as a range to then get time of day we need to leverage the data in the pull.heroku allows us to bypass CORS permission
-var tmApiCall = CORS + `https://app.ticketmaster.com/discovery/v2/events.json?apikey=aw1x9XltYOH5uHXUYANmxJszqWA77OZR&postalCode=${zip}&startDateTime=${tmDateString}&endDateTime=${tmDateString2}`;
 
 //create an Ajax call
 function getEvents() {
-  tmApiCall = `${CORS}https://app.ticketmaster.com/discovery/v2/events.json?apikey=aw1x9XltYOH5uHXUYANmxJszqWA77OZR&postalCode=${zip}&startDateTime=${tmDateString}&endDateTime=${tmDateString2}`;
+  const tmApiCall = `${CORS}https://app.ticketmaster.com/discovery/v2/events.json?apikey=aw1x9XltYOH5uHXUYANmxJszqWA77OZR&postalCode=${zip}&startDateTime=${tmDateString}&endDateTime=${tmDateString2}`;
 
   //create an Ajax call
   $.ajax({
@@ -223,7 +222,6 @@ $("body").on("click", ".SimilarFreeTime", function () {
   var eventMonth = eventChosen.slice(5, 7);
   var eventDay = eventChosen.slice(8, 10);
   eventfulDateString = `${eventYear}${eventMonth}${eventDay}00-${eventYear}${eventMonth}${eventDay}00`;
-  console.log(eventfulDateString)
   getEventfulEvents();
 
   //Gets TicketMaster Data as well
