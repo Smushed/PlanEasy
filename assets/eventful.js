@@ -235,15 +235,12 @@ const getEventfulEvents = () => {
 
         $(".eventDiv").css({ border: "2px solid black", "margin-top": "5px" });
 
-        //weather close tag
       });
 
-      //for loop close tag
     }
 
-    //TODO Make gettimeanddate an export function
     //format date and time to be front facing
-    function getTimeAndDate(eventDate) {
+    const getTimeAndDate = (eventDate) => {
       // variable will hold the year the event takes place
       var eventYear = eventDate.slice(0, 4);
 

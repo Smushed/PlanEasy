@@ -150,10 +150,11 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 function displayLoggedIn() {
     $(".login-success").show();
+    $(`.navbar`).show();
     $(".login-form").hide();
     $(".eventDisplay").show();
     //shows calendar
-    $(".calendar-display").show();
+    $(".calendar-events").show();
     $("#calendar-card").show();
     $("#fralendar-welcome").hide();
     $("#fralendar-intro").hide();
@@ -166,8 +167,9 @@ function displayLoggedOut() {
     $(".login-success").hide();
     $(".input-name-zip").hide();
     $(".login-form").show();
+    $(`.navbar`).hide();
     //hide calendar on logout
-    $(".calendar-display").hide();
+    $(".calendar-events").hide();
     $(".eventDisplay").hide();
     $(".eventDisplay").hide();
     $("#calendar-card").hide();

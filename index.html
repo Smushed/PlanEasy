@@ -17,6 +17,8 @@
 </head>
 
 <body>
+
+    <!-- Welcome Message that displays when the user isn't logged in -->
     <div id="fralendar-welcome">
         <div class="container text-center">
             <h1 class="display-3 text-center">Welcome to Fralendar</h1>
@@ -33,25 +35,29 @@
                 <input class="password" type="password" placeholder="Password">
                 <br>
                 <br>
-                <button class="signin">Sign In</button>
-                <button class="register">Register</button>
+                <button class="signin btn btn-success">Sign In</button>
+                <button class="register btn btn-success">Register</button>
             </div>
         </p>
     </div>
 
-    <nav class="navbar mp-reset login-success">
+    <!-- This displays when the user is logged in -->
+    <!-- Nav Bar -->
+    <div class="navbar mp-reset">
         <h3 class="welcome-message"> Welcome, <span class="name-display"></span>!</h3>
-        <div class="location-display text-right">Current Location: <span class="zip-display"></span>
-            <button class="logout btn btn-secondary">Logout</button></div>
-    </nav>
+        <button class="logout btn btn-secondary">Logout</button>
+    </div>
+
+    <!-- This shows if the current user doesn't have a zip associated with them -->
     <div class="input-name-zip">
         Please input your name and zip code:
         <input class="name-input" placeholder="Name">
         <input class="zip-input" placeholder="Zip">
-        <button class="submit-name-zip">Submit Name & Zip</button>
+        <button class="submit-name-zip btn btn-primary">Submit Name & Zip</button>
     </div>
 
-    <div class="calendar-display container-fluid">
+    <!-- This is the display for the user to input their free time -->
+    <div class="container-fluid calendar-events">
         <div class="row">
             <div class="col-md-7 text-center">
                 <h3>Fill out your calendar to get started</h3>
@@ -60,7 +66,7 @@
                 <div class="calendarHTML"></div>
                 <br><br>
                 <hr>
-                <p class="lead"> Go ahead, young one, pick a time to schedule your events.</p>
+                <p class="lead"> Pick a time to schedule your events and let your friends know.</p>
                 <div class="eventbtn"></div>
             </div>
             <div class="col-md-5">
@@ -73,6 +79,7 @@
         </div>
     </div>
 
+    <!-- Below are the modals for user input validation on login and zip input -->
     <div class="login-modal modal">
         <div class="modal-content">
             <p>Please use the email format using both " @ " and " . ". Also, please ensure your password is at
@@ -88,7 +95,8 @@
         </div>
     </div>
 
-    <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
+        crossorigin='anonymous'></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
     <script src="assets/login.js"></script>
