@@ -22,6 +22,7 @@
     user-select: none;
     cursor: pointer;
     border: 2px rgba(29, 29, 29, 0.705) solid;
+    background: rgb(217, 246, 255);
     border-radius: 3px;
     height: 55px;
     margin-top: 5px;
@@ -31,4 +32,9 @@
 }
 .blank-time {
     background: white;
+}
+.day {
+    margin-left: 10px;
+    border-radius: 5px;
+    font-weight: 600;
 }

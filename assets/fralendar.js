@@ -25,32 +25,10 @@ const timeStamps = [6, 12, 18];
 // array for out button value names
 const timeOfDay = [`Morning`, `Afternoon`, `Night`];
 
-// creating a div to append all days to (Sunday-Saturday)
-const firstRowDiv = $(`<div>`);
-firstRowDiv.addClass(`row`);
-
-// we have this slot because bootstrap requires 12 column slots (7 days * 1 slot each ) = 4 remaing slots
-firstRowDiv.prepend(`<div class="col-md-1"></div>`);
-
-// for loop to dynamically create the days along with any added attr
-for (let i = 0; i < daysOfWeek.length; i++) {
-    const dayDiv = $("<div>");
-    dayDiv.addClass(["week", "text-center", "col-md-2"]);
-    dayDiv.text(daysOfWeek[i]);
-
-    firstRowDiv.append(dayDiv);
-};
-
-// Same as other div added above, we now have 12 column required per bootstrap
-firstRowDiv.append(`<div class="col-md-1"></div>`);
-
-// append this row to html doc
-$(".calendarHTML").append(firstRowDiv);
-
 // creating second row for our dates/buttons along with attr
-const secondRowDiv = $("<div>");
-secondRowDiv.attr({ "id": "secondRow" });
-secondRowDiv.addClass(["row", "text-center"]);
+const secondRowDiv = $(`<div>`);
+secondRowDiv.attr({ "id": `secondRow` });
+secondRowDiv.addClass([`row`, `text-center`]);
 
 // With 4 slot remaing in columns this div will be used for calendar purposes
 secondRowDiv.prepend(`<div class="col-md-1"></div>`);
@@ -58,19 +36,16 @@ secondRowDiv.prepend(`<div class="col-md-1"></div>`);
 // Loop to dynamically create of dates
 
 for (let j = 0; j < dayNum.length; j++) {
-    const dayOfTheWeek = $("<div>");
-    dayOfTheWeek.addClass(["day", "col-md-2"]);
+    const dayOfTheWeek = $(`<div>`);
+    dayOfTheWeek.addClass([`day`, `col-md-2`]);
     // this will dynamically give us text for current day + next 6 days
-    dayOfTheWeek.text(dayNum[j]);
+    dayOfTheWeek.text(`${daysOfWeek[j]} ${dayNum[j]}`);
 
     //loop to generate the 3 buttons in our dates
     for (let k = 0; k < 3; k++) {
-        const calendarItem = $("<div>");
+        const calendarItem = $(`<div>`);
         calendarItem.addClass([`calendar-item`]);
-        // Line will output
-        // id : "Specific Day + Specific Time"
-        // value: 0 initial starting value
-        // data-unix: Specific date with specific time of day
+
         calendarItem.attr({
             "data-unix": moment().startOf("day").add(j, "days").add(timeStamps[k], "hours").format()
         });
@@ -82,8 +57,8 @@ for (let j = 0; j < dayNum.length; j++) {
     }
     secondRowDiv.append(dayOfTheWeek);
 }
-var eventRow = $("<div>")
-eventRow.addClass(["row", "eventDisplay"]);
+var eventRow = $(`<div>`)
+eventRow.addClass([`row`, `eventDisplay`]);
 
 // again extra 2 column can do whatever with this
 secondRowDiv.append(`<div class="col-md-1"></div>`)
@@ -161,7 +136,7 @@ firebase.database().ref("/freetime/").on("value", function (snap) {
 
 //Reads the freetime object and checks if there are any times which line up
 const getUserFreeTimeArray = () => {
-    $(".eventbtn").empty();
+    $(`.eventbtn`).empty();
     let friendFreeTime = {};
     const friendFreeTimeArray = [];
     const writtenFreeTime = [];
@@ -169,7 +144,7 @@ const getUserFreeTimeArray = () => {
 
     //Creates a user array for the user's free time which then we compare to the other user's free time.
     for (let key in userFreeTime) {
-        if (userFreeTime[key] === "1") {
+        if (userFreeTime[key] === `1`) {
             userFreeTimeArray.push(key);
         };
     };
@@ -179,7 +154,7 @@ const getUserFreeTimeArray = () => {
             friendFreeTime = freetime[key];
         };
         for (let j in friendFreeTime) {
-            if (friendFreeTime[j] === "1") {
+            if (friendFreeTime[j] === `1`) {
                 friendFreeTimeArray.push(j);
             };
         };
@@ -189,8 +164,8 @@ const getUserFreeTimeArray = () => {
             //The and statment checks if that button has already been written to the dom
             if (userFreeTimeArray.includes(friendFreeTimeArray[i]) && !writtenFreeTime.includes(friendFreeTimeArray[i])) {
                 writtenFreeTime.push(friendFreeTimeArray[i]);
-                const eventBtn = $("<button>")
-                eventBtn.addClass(["SimilarFreeTime", "btn", "btn-success"])
+                const eventBtn = $(`<button>`)
+                eventBtn.addClass([`SimilarFreeTime`, `btn`, `btn-success`])
                 eventBtn.attr({
                     value: friendFreeTimeArray[i].slice(0, 16)
                 })
@@ -204,7 +179,7 @@ const getUserFreeTimeArray = () => {
                 const eventMin = friendFreeTimeArray[i].slice(14, 16);
 
                 eventBtn.text(`${eventMonth}/${eventDay} ${eventHour}:${eventMin}`);
-                $(".eventbtn").append(eventBtn);
+                $(`.eventbtn`).append(eventBtn);
             };
         };
     };

@@ -2,9 +2,6 @@
   margin: 0;
   padding: 0;
 }
-body {
-  background: lightblue;
-}
 input {
   border-radius: 5px;
   width: 250px;
@@ -44,7 +41,6 @@ input {
   width: 70%;
   margin: auto;
   margin-top: 15%;
-  background: lightblue;
   padding: 25px;
   padding-bottom: 45px;
   border-radius: 4px;
@@ -57,7 +53,7 @@ input {
   padding-right: 25px;
   padding-bottom: 25px;
   padding-top: 15px;
-  background: rgb(201, 219, 224);
+  background: rgb(217, 246, 255);
   border-radius: 3px;
   float: left;
 }
