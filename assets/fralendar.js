@@ -43,7 +43,20 @@ for (let j = 0; j < dayNum.length; j++) {
     const dayOfTheWeek = $(`<div>`);
     dayOfTheWeek.addClass([`day`, `col-md-1`]);
     // this will dynamically give us text for current day + next 6 days
-    dayOfTheWeek.html(`${daysOfWeek[j]} \n ${dayNum[j]}`);
+    switch (dayNum[j]) {
+        case 1 || 21 || 31:
+            dayOfTheWeek.html(`${daysOfWeek[j]} \n ${dayNum[j]}st`);
+            break;
+        case 2 || 22:
+            dayOfTheWeek.html(`${daysOfWeek[j]} \n ${dayNum[j]}nd`);
+            break;
+        case 3 || 23:
+            dayOfTheWeek.html(`${daysOfWeek[j]} \n ${dayNum[j]}rd`);
+            break;
+        default:
+            dayOfTheWeek.html(`${daysOfWeek[j]} \n ${dayNum[j]}th`);
+            break;
+    }
 
     //loop to generate the 3 buttons in our dates
     for (let k = 0; k < 3; k++) {
