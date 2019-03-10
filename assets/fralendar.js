@@ -9,6 +9,8 @@ const daysOfWeek = [
     moment().add(2, `days`).format(`dddd`),
     moment().add(3, `days`).format(`dddd`),
     moment().add(4, `days`).format(`dddd`),
+    moment().add(5, `days`).format(`dddd`),
+    moment().add(6, `days`).format(`dddd`),
 ];
 
 //array for getting current date and next 6 dates
@@ -18,6 +20,8 @@ const dayNum = [
     moment().add(2, `days`).date(),
     moment().add(3, `days`).date(),
     moment().add(4, `days`).date(),
+    moment().add(5, `days`).date(),
+    moment().add(6, `days`).date(),
 ];
 
 const timeStamps = [6, 12, 18];
@@ -31,13 +35,13 @@ secondRowDiv.attr({ "id": `secondRow` });
 secondRowDiv.addClass([`row`, `text-center`]);
 
 // With 4 slot remaing in columns this div will be used for calendar purposes
-secondRowDiv.prepend(`<div class="col-md-1"></div>`);
+secondRowDiv.prepend(`<div class="col-md-2"></div>`);
 
 // Loop to dynamically create of dates
 
 for (let j = 0; j < dayNum.length; j++) {
     const dayOfTheWeek = $(`<div>`);
-    dayOfTheWeek.addClass([`day`, `col-md-2`]);
+    dayOfTheWeek.addClass([`day`, `col-md-1`]);
     // this will dynamically give us text for current day + next 6 days
     dayOfTheWeek.html(`${daysOfWeek[j]} \n ${dayNum[j]}`);
 
@@ -161,7 +165,7 @@ const getUserFreeTimeArray = () => {
             if (userFreeTimeArray.includes(friendFreeTimeArray[i]) && !writtenFreeTime.includes(friendFreeTimeArray[i])) {
                 writtenFreeTime.push(friendFreeTimeArray[i]);
                 const eventBtn = $(`<button>`)
-                eventBtn.addClass([`SimilarFreeTime`, `btn`, `btn-success`])
+                eventBtn.addClass([`SimilarFreeTime`, `btn`, `btn-light`])
                 eventBtn.attr({
                     value: friendFreeTimeArray[i].slice(0, 16)
                 })

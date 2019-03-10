@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+body {
+  background: #F6F6F6;
+}
 input {
   border-radius: 5px;
   width: 250px;
@@ -40,7 +43,7 @@ input {
 #fralendar-welcome {
   width: 70%;
   margin: auto;
-  margin-top: 15%;
+  margin-top: 0;
   padding: 25px;
   padding-bottom: 45px;
   border-radius: 4px;
@@ -53,9 +56,9 @@ input {
   padding-right: 25px;
   padding-bottom: 25px;
   padding-top: 15px;
-  background: rgb(217, 246, 255);
   border-radius: 3px;
   float: left;
+  font-size: 30px;
 }
 .location-display {
   width: 45%;
@@ -66,11 +69,11 @@ input {
   display: none;
   height: 10vh;
   overflow: hidden;
-  background: white;
 }
 .logout {
-  margin-top: 30px;
-  margin-left: 10px;
+  margin-top: 10px;
+  float: right;
+  margin-right: 10px;
 }
 .input-name-zip {
   display: none;
@@ -79,4 +82,14 @@ input {
   height: 150px;
   margin-left: 50%;
   transform: translateX(-50%)
+}
+.welcome-image {
+  border-radius: 10px;
+  height: 350px;
+}
+.header {
+  font-size: 30px;
+}
+.logo {
+  height: 50px;
 }

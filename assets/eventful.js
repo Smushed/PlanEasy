@@ -35,7 +35,6 @@ const getEventfulEvents = () => {
     for (let i = 0; i < eventfulCall.events.event.length; i++) {
       // variable holds the title of the events
       var eventTitle = eventfulCall.events.event[i].title;
-      console.log(eventfulCall.events);
       //variable holds the name of venue
       var eventVenueName = eventfulCall.events.event[i].venue_name;
 
@@ -65,7 +64,7 @@ const getEventfulEvents = () => {
 
       // creates div to append all info of event along with needed attributes
       var parentEvent = $(`<div>`);
-      parentEvent.addClass([`eventDiv`, `col-md-5`]);
+      parentEvent.addClass([`eventDiv`, `col-md-12`]);
 
       //TODO Fix this.
       // creates an img element along with needed attributes
@@ -148,7 +147,7 @@ const getEventfulEvents = () => {
         target: `_blank`
       });
       bookBtn.html(`Click here to buy tickets`);
-      bookBtn.addClass([`btn`, `btn-success`])
+      bookBtn.addClass([`btn`, `btn-light`])
       bookspan.append(bookBtn);
       // append name to row
       $(divRowBook).append(bookspan);

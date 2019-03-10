@@ -62,7 +62,7 @@ function getEvents() {
 
       // creates div to append all info of event along with needed attributes
       const parentEvent = $(`<div>`);
-      parentEvent.addClass([`eventDiv`, `col-md-5`]);
+      parentEvent.addClass([`eventDiv`, `col-md-12`]);
 
       //creates an img element along with needed attributes
       const imgEvent = $(`<img>`);
@@ -126,7 +126,7 @@ function getEvents() {
         target: `_blank`
       });
       bookBtn.html(`Click here to buy tickets`);
-      bookBtn.addClass([`btn`, `btn-success`])
+      bookBtn.addClass([`btn`, `btn-light`])
       bookspan.append(bookBtn);
       // append name to row
       $(divRowBook).append(bookspan);

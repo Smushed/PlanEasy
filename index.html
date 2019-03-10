@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Fralendar - Connecting you with friends</title>
 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Shrikhand" rel="stylesheet">
     <link rel="stylesheet" href="assets/bootstrap.min.css">
     <link rel="stylesheet" href="assets/style.css">
@@ -21,11 +19,10 @@
     <!-- Welcome Message that displays when the user isn't logged in -->
     <div id="fralendar-welcome">
         <div class="container text-center">
+            <img class="welcome-image" src="./assets/images/homepage.jpg" alt="Welcome Image">
             <h1 class="display-3 text-center">Welcome to Fralendar</h1>
-            <p class="lead">Fralendar connects you and your friends by matching your free time and helping
-                fill
-                it with
-                great local events. No more endless group texts.</p>
+            <p class="lead">Fralendar connects you and your friends by matching your free time and helping fill it with great local events. No more
+                endless group texts.</p>
             <hr>
             <p>Sign-in below, and let the good times roll!</p>
         </div>
@@ -44,7 +41,7 @@
     <!-- This displays when the user is logged in -->
     <!-- Nav Bar -->
     <div class="navbar mp-reset">
-        <h3 class="welcome-message"> Welcome, <span class="name-display"></span>!</h3>
+        <div class="welcome-message"> <img class="logo" src="./assets/images/calendar-icon.png" alt="Icon"></div>
         <button class="logout btn btn-secondary">Logout</button>
     </div>
 
@@ -59,62 +56,62 @@
     <!-- This is the display for the user to input their free time -->
     <div class="container-fluid calendar-events">
         <div class="row">
-            <div class="col-md-6 text-center">
-                <h3>Fill out your calendar to get started</h3>
+            <div class="col-md-12 text-center">
+                <div class="header">Fill out your calendar to get started</div>
                 <hr>
-                <h6>Click once if you're free, and twice if you're busy</h6>
+                <p>Click once if you're free, and twice if you're busy</p>
                 <br>
                 <div class="calendarHTML"></div>
                 <br><br>
                 <hr>
                 <p class="lead"> Pick a time to schedule your events and let your friends know.</p>
-            </div>
-            <div class="col-md-1">
-                <br />
-                <br />
                 <div class="eventbtn"></div>
             </div>
-            <div class="col-md-5">
-                <h3 class="text-center">Weather</h3>
-                <hr>
-                <div>
-                    <img class="weather-icon" src="./assets/images/weather.png" alt="Weather Icon">
-                    <div class="weather-display">
+        </div>
+        <div class="row">
 
+            <div class="row">
+                <div class="col-md-6 eventDisplay">
+                </div>
+                <div class="col-md-6">
+                    <div class="header text-center">Weather<div class="header">
+                            <hr>
+                            <div>
+                                <img class="weather-icon" src="./assets/images/weather.png" alt="Weather Icon">
+                                <div class="weather-display">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="eventDisplay">
+
+        <!-- Below are the modals for user input validation on login and zip input -->
+        <div class="login-modal modal">
+            <div class="modal-content">
+                <p>Please use the email format using both " @ " and " . ". Also, please ensure your password is at
+                    least 6 letters long.</p>
+                <button class="btn modal-close login-close">Close</button>
             </div>
         </div>
-    </div>
 
-    <!-- Below are the modals for user input validation on login and zip input -->
-    <div class="login-modal modal">
-        <div class="modal-content">
-            <p>Please use the email format using both " @ " and " . ". Also, please ensure your password is at
-                least 6 letters long.</p>
-            <button class="btn modal-close login-close">Close</button>
+        <div class="name-zip-modal modal">
+            <div class="modal-content">
+                <p>Your Zip must contain 5 numeric characters</p>
+                <button class="btn modal-close name-zip-close">Close</button>
+            </div>
         </div>
-    </div>
 
-    <div class="name-zip-modal modal">
-        <div class="modal-content">
-            <p>Your Zip must contain 5 numeric characters</p>
-            <button class="btn modal-close name-zip-close">Close</button>
-        </div>
-    </div>
-
-    <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
-        crossorigin='anonymous'></script>
-    <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
-    <script src="assets/login.js"></script>
-    <script src="assets/fralendar.js"></script>
-    <script src="assets/ticketmaster.js"></script>
-    <script src="assets/eventful.js"></script>
+        <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
+            crossorigin='anonymous'></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+        <script src="assets/login.js"></script>
+        <script src="assets/fralendar.js"></script>
+        <script src="assets/ticketmaster.js"></script>
+        <script src="assets/eventful.js"></script>
+        <script src="assets/darksky.js"></script>
 </body>
 
 </html>

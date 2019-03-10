@@ -5,13 +5,15 @@ var CORS = "https://cors-anywhere.herokuapp.com/";
 // Array for getting current day and next 6 days
 
 //array for getting current date and next 6 dates
-const dayNum = [
-    moment().date(),
-    moment().add(1, `days`).date(),
-    moment().add(2, `days`).date(),
-    moment().add(3, `days`).date(),
-    moment().add(4, `days`).date(),
+const weatherDay = [
+    moment().unix(),
+    moment().add(1, `days`).unix(),
+    moment().add(2, `days`).unix(),
+    moment().add(3, `days`).unix(),
+    moment().add(4, `days`).unix(),
 ];
+
+console.log(weatherDay)
 
 var weatherTime = eventfulStartTime;
 weatherTime = eventfulStartTime
