@@ -9,7 +9,7 @@ var CORS = `https://cors-anywhere.herokuapp.com/`;
 // Api url - includes zip and date. date is set as a range to then get time of day we need to leverage the data in the pull.heroku allows us to bypass CORS permission
 
 //create an Ajax call
-function getEvents() {
+function getTicketMasterEvents() {
   const tmApiCall = `${CORS}https://app.ticketmaster.com/discovery/v2/events.json?apikey=aw1x9XltYOH5uHXUYANmxJszqWA77OZR&postalCode=${zip}&startDateTime=${tmDateString}&endDateTime=${tmDateString2}`;
 
   //create an Ajax call
@@ -72,7 +72,7 @@ function getEvents() {
       });
       imgEvent.addClass(`eventImg`)
 
-      //creating a div for the remaining 8 columns needed per bootstrap
+      //creating a div for the remaining columns for the info found
       const divColumn = $(`<div>`);
       divColumn.addClass([`col-md-12`, `info`]);
 
@@ -90,21 +90,6 @@ function getEvents() {
       const divRowBook = $(`<div>`);
       divRowBook.addClass([`row`, `info`]);
       divColumn.append(divRowBook);
-
-      //creating a new row to insert Weather Summary
-      const divRowSummary = $(`<div>`);
-      divRowSummary.addClass([`row`, `info`]);
-      divColumn.append(divRowSummary);
-
-      //creating a new row to insert temp
-      const divRowTemp = $(`<div>`);
-      divRowTemp.addClass([`row`, `info`]);
-      divColumn.append(divRowTemp);
-
-      //creating a new row to insert Chance of Rain
-      const divRowPrecip = $(`<div>`);
-      divRowPrecip.addClass([`row`, `info`]);
-      divColumn.append(divRowPrecip);
 
       //adding picture plus a new div to insert all other info
       parentEvent.append([imgEvent, divColumn]);
@@ -126,7 +111,7 @@ function getEvents() {
         target: `_blank`
       });
       bookBtn.html(`Click here to buy tickets`);
-      bookBtn.addClass([`btn`, `btn-light`])
+      bookBtn.addClass([`btn`, `btn-primary`])
       bookspan.append(bookBtn);
       // append name to row
       $(divRowBook).append(bookspan);
@@ -146,18 +131,3 @@ function getEvents() {
     }
   });
 }
-
-$("body").on("click", ".SimilarFreeTime", function () {
-  $(".eventDisplay").empty();
-  var eventChosen = $(this).val();
-  var eventYear = eventChosen.slice(0, 4);
-  var eventMonth = eventChosen.slice(5, 7);
-  var eventDay = eventChosen.slice(8, 10);
-  eventfulDateString = `${eventYear}${eventMonth}${eventDay}00-${eventYear}${eventMonth}${eventDay}00`;
-  getEventfulEvents();
-
-  //Gets TicketMaster Data as well
-  tmDateString = eventChosen + ":00Z";
-  tmDateString2 = eventChosen.slice(0, 11) + "23:59:59Z";
-  getEvents();
-});

@@ -16,6 +16,7 @@ firebase.initializeApp(config);
 
 //Login Event
 $(".signin").on("click", e => {
+    event.preventDefault();
     //Pulls the user input
     const email = $(".email").val();
     const pass = $(".password").val();
@@ -37,6 +38,7 @@ $(".signin").on("click", e => {
 
 //Signup Event
 $(".register").on("click", e => {
+    event.preventDefault();
     //Pulls the user input
     const email = $(".email").val();
     const pass = $(".password").val();
@@ -54,7 +56,7 @@ $(".register").on("click", e => {
     } else {
         showLoginModal();
         clearInputForms();
-    }
+    };
 });
 
 $(".logout").on("click", e => {

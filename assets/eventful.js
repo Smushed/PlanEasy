@@ -147,7 +147,7 @@ const getEventfulEvents = () => {
         target: `_blank`
       });
       bookBtn.html(`Click here to buy tickets`);
-      bookBtn.addClass([`btn`, `btn-light`])
+      bookBtn.addClass([`btn`, `btn-primary`])
       bookspan.append(bookBtn);
       // append name to row
       $(divRowBook).append(bookspan);

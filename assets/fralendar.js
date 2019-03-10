@@ -177,10 +177,14 @@ const getUserFreeTimeArray = () => {
         for (let i = 0; i < friendFreeTimeArray.length; i++) {
             //This checks if the free time that you've selected lines up with any one of your friends free times
             //The and statment checks if that button has already been written to the dom
-            if (userFreeTimeArray.includes(friendFreeTimeArray[i]) && !writtenFreeTime.includes(friendFreeTimeArray[i])) {
+
+            // Checks if the free time is before right now. If so it doesn't write it to the screen
+            const timeCompare = moment().isBefore(friendFreeTimeArray[i]);
+
+            if (userFreeTimeArray.includes(friendFreeTimeArray[i]) && timeCompare && !writtenFreeTime.includes(friendFreeTimeArray[i])) {
                 writtenFreeTime.push(friendFreeTimeArray[i]);
                 const eventBtn = $(`<button>`)
-                eventBtn.addClass([`SimilarFreeTime`, `btn`, `btn-light`])
+                eventBtn.addClass([`SimilarFreeTime`, `btn`, `btn-primary`])
                 eventBtn.attr({
                     value: friendFreeTimeArray[i].slice(0, 16)
                 })
