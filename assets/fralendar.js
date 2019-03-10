@@ -23,7 +23,7 @@ const dayNum = [
 const timeStamps = [6, 12, 18];
 
 // array for out button value names
-const timeOfDay = [`Morning`, `Afternoon`, `Night`];
+const timeOfDay = [`morning`, `afternoon`, `night`];
 
 // creating second row for our dates/buttons along with attr
 const secondRowDiv = $(`<div>`);
@@ -39,12 +39,12 @@ for (let j = 0; j < dayNum.length; j++) {
     const dayOfTheWeek = $(`<div>`);
     dayOfTheWeek.addClass([`day`, `col-md-2`]);
     // this will dynamically give us text for current day + next 6 days
-    dayOfTheWeek.text(`${daysOfWeek[j]} ${dayNum[j]}`);
+    dayOfTheWeek.html(`${daysOfWeek[j]} \n ${dayNum[j]}`);
 
     //loop to generate the 3 buttons in our dates
     for (let k = 0; k < 3; k++) {
         const calendarItem = $(`<div>`);
-        calendarItem.addClass([`calendar-item`]);
+        calendarItem.addClass([`calendar-item`, `${timeOfDay[k]}`]);
 
         calendarItem.attr({
             "data-unix": moment().startOf("day").add(j, "days").add(timeStamps[k], "hours").format()
@@ -52,7 +52,6 @@ for (let j = 0; j < dayNum.length; j++) {
         calendarItem.val(0)
 
         // will display the time of day (Morning, Afternoon, Night)
-        calendarItem.text(timeOfDay[k]);
         dayOfTheWeek.append(calendarItem);
     }
     secondRowDiv.append(dayOfTheWeek);
@@ -74,14 +73,11 @@ $(`body`).on(`click`, `.calendar-item`, function () {
     if (value === `0`) {
         $(this).val(`1`);
         $(this).addClass(`chosen-time`);
-        $(this).removeClass(`blank-time`);
     }
     // changes value on button to `0` or false signifying they are unavailable
     if (value === `1`) {
         $(this).val(`0`);
         $(this).removeClass(`chosen-time`);
-        $(this).addClass(`blank-time`);
-
     };
 
     //Pulls the value and the ID from each button to be used in firebase
