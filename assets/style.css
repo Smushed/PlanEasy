@@ -2,8 +2,11 @@
   margin: 0;
   padding: 0;
 }
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,7db9e8+100&1+0,1+48,0.7+80,0+100 */
 body {
-  background: #F6F6F6;
+  height: 100vh;
+  background: rgb(167,167,167);
+  background: linear-gradient(180deg, #3798D4 56.5%,rgba(255,255,255,1) 44.5%);
 }
 input {
   border-radius: 5px;
