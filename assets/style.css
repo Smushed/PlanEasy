@@ -6,7 +6,7 @@
 body {
   height: 100vh;
   background: rgb(167,167,167);
-  background: linear-gradient(180deg, #3798D4 56.5%,rgba(255,255,255,1) 44.5%);
+  background: linear-gradient(180deg, #3798D4 58.5%,rgba(255,255,255,1) 41.5%);
 }
 .white-font {
   color: white;
