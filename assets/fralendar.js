@@ -42,7 +42,9 @@ secondRowDiv.prepend(`<div class="col-md-2"></div>`);
 for (let j = 0; j < dayNum.length; j++) {
     const dayOfTheWeek = $(`<div>`);
     dayOfTheWeek.addClass([`day`, `col-md-1`]);
+
     // this will dynamically give us text for current day + next 6 days
+    // Switch statement will update to give the proper suffix for the date
     switch (dayNum[j]) {
         case 1 || 21 || 31:
             dayOfTheWeek.html(`${daysOfWeek[j]} \n ${dayNum[j]}st`);
