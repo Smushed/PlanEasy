@@ -75,3 +75,8 @@ input {
 .input-name-zip {
   display: none;
 }
+.weather-icon {
+  height: 150px;
+  margin-left: 50%;
+  transform: translateX(-50%)
+}

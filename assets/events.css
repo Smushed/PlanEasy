@@ -1,0 +1,12 @@
+.eventDiv {
+    float: left;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 210px;
+}
+.eventImg {
+    float: left;
+    height: 200px;
+    margin-top: 2px;
+}
