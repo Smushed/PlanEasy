@@ -20,11 +20,11 @@
     <div id="fralendar-welcome">
         <div class="container text-center">
             <img class="welcome-image" src="./assets/images/homepage.jpg" alt="Welcome Image">
-            <h1 class="display-3 text-center">Welcome to Fralendar</h1>
-            <p class="lead">Fralendar connects you and your friends by matching your free time and helping fill it with great local events. No more
+            <h1 class="white-font text-center">Welcome to Fralendar</h1>
+            <p class="lead white-font">Fralendar connects you and your friends by matching your free time and helping fill it with great local events. No more
                 endless group texts.</p>
             <hr>
-            <p>Sign-in below, and let the good times roll!</p>
+            <p class="white-font">Sign-in below, and let the good times roll!</p>
         </div>
         <p class="lead">
             <div class="login-form text-center">
@@ -48,7 +48,7 @@
     </div>
 
     <!-- This shows if the current user doesn't have a zip associated with them -->
-    <div class="input-name-zip">
+    <div class="input-name-zip white-font">
         Please input your name and zip code:
         <input class="name-input" placeholder="Name">
         <input class="zip-input" placeholder="Zip">
@@ -57,31 +57,28 @@
 
     <!-- This is the display for the user to input their free time -->
     <div class="container-fluid calendar-events">
-        <div class="row">
+        <div class="row no-event">
             <div class="col-md-12 text-center">
-                <div class="header">Fill out your calendar to get started</div>
+                <div class="header white-font">Fill out your calendar to get started</div>
                 <hr>
-                <p>Click once if you're free, and twice if you're busy</p>
+                <p class="white-font medium-font-size">Click once if you're free, and twice if you're busy</p>
                 <br>
                 <div class="calendarHTML"></div>
                 <br><br>
                 <hr>
-                <p class="lead"> Pick a time to schedule your events and let your friends know.</p>
+                <p class="medium-font-size"> Pick a time to schedule your events and let your friends know.</p>
                 <div class="eventbtn"></div>
             </div>
         </div>
-        <div class="row">
-
-            <div class="row">
-                <div class="col-md-6 eventDisplay">
-                </div>
-                <div class="col-md-6">
-                    <div class="header text-center">Weather<div class="header">
-                            <hr>
-                            <div>
-                                <img class="weather-icon" src="./assets/images/weather.png" alt="Weather Icon">
-                                <div class="weather-display">
-                                </div>
+        <div class="row event-chosen">
+            <div class="col-md-6 eventDisplay">
+            </div>
+            <div class="col-md-6">
+                <div class="header text-center">Weather<div class="header">
+                        <hr>
+                        <div>
+                            <img class="weather-icon" src="./assets/images/weather.png" alt="Weather Icon">
+                            <div class="weather-display">
                             </div>
                         </div>
                     </div>
@@ -105,8 +102,7 @@
             </div>
         </div>
 
-        <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
-            crossorigin='anonymous'></script>
+        <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
         <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
         <script src="assets/login.js"></script>
