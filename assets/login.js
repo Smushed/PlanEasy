@@ -174,11 +174,11 @@ function displayLoggedOut() {
     $(".calendar-events").hide();
     $(".eventDisplay").hide();
     $(".eventDisplay").hide();
-    $("#calendar-card").hide();
     $("#fralendar-welcome").show();
     $("#fralendar-intro").show();
     $(".Calendar").hide();
     $(".eventbtn").hide();
+    $(`.event-chosen`).hide();
 };
 
 function getNameAndZip() {
