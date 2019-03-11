@@ -162,6 +162,7 @@ function displayLoggedIn() {
     $("#fralendar-intro").hide();
     $(".Calendar").show();
     $(".eventbtn").show();
+    $(`.event-chosen`).hide();
 };
 
 function displayLoggedOut() {
@@ -174,6 +175,7 @@ function displayLoggedOut() {
     $(".calendar-events").hide();
     $(".eventDisplay").hide();
     $(".eventDisplay").hide();
+    $("#calendar-card").hide();
     $("#fralendar-welcome").show();
     $("#fralendar-intro").show();
     $(".Calendar").hide();

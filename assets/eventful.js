@@ -8,20 +8,8 @@ var eventfulCall = [];
 const eventfulUrl = "https://api.eventful.com/json/events/search?";
 const eventfulKey = "app_key=SbhFzbfzfXwhtkTg";
 
-const getEventfulEvents = () => {
-  eventfulApiCall =
-    CORS +
-    eventfulUrl +
-    "location=" +
-    zip +
-    "&" +
-    eventfulKey +
-    "&date=" +
-    eventfulDateString +
-    "&" +
-    "within=" +
-    eventfulRadius +
-    "&page_size=5&sort_order=popularity";
+const getEventfulEvents = (dateString) => {
+  eventfulApiCall = `${CORS}${eventfulUrl}location=${zip}&${eventfulKey}&date=${dateString}&within=${eventfulRadius}&page_size=5&sort_order=popularity`;
   //create an Ajax call
   $.ajax({
     type: "GET",
@@ -66,14 +54,12 @@ const getEventfulEvents = () => {
       var parentEvent = $(`<div>`);
       parentEvent.addClass([`eventDiv`, `col-md-12`]);
 
-      //TODO Fix this.
+      const eventfulImage = eventfulCall.events.event[i].image.medium.url || `./assets/images/friends.svg`
+
       // creates an img element along with needed attributes
       var imgEvent = $("<img>");
       imgEvent.attr({
-        src:
-          //  eventfulCall.events.event[i].image.medium.url
-          "https://peopledotcom.files.wordpress.com/2017/09/surf-dog-6.jpg?w=768"
-
+        src: eventfulImage
       });
       imgEvent.addClass([`col-md-4`, `eventImg`, `mp-reset`]);
 
@@ -155,8 +141,6 @@ const getEventfulEvents = () => {
       $(divRowBook).append(bookspan);
 
       $(`.eventDisplay`).append(parentEvent);
-
-      $(`.eventDiv`).css({ border: `2px solid black`, 'margin-top': `5px` });
 
       //format date and time to be front facing
       function getTimeAndDate(eventDate) {

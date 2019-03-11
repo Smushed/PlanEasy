@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Fralendar - Connecting you with friends</title>
+    <title>PlanEasy - Connecting you with friends</title>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Shrikhand" rel="stylesheet">
     <link rel="stylesheet" href="assets/bootstrap.min.css">
@@ -20,10 +20,9 @@
     <div id="fralendar-welcome">
         <div class="container text-center">
             <img class="welcome-image" src="./assets/images/homepage.jpg" alt="Welcome Image">
-            <h1 class="white-font text-center">Welcome to Fralendar</h1>
-            <p class="lead white-font">Fralendar connects you and your friends by matching your free time and helping fill it with great local events.
-                No more
-                endless group texts.</p>
+            <h1 class="lead greeting white-font text-center">Welcome to PlanEasy</h1>
+            <p class="lead white-font">PlanEasy connects you and your friends by matching your free time and helping fill it with great local events.
+                No more endless group texts.</p>
             <hr>
             <p class="white-font">Sign-in below, and let the good times roll!</p>
         </div>
@@ -60,9 +59,9 @@
     <div class="container-fluid calendar-events">
         <div class="row no-event-chosen">
             <div class="col-md-12 text-center">
-                <div class="header white-font">Fill out your calendar to get started</div>
+                <div class="header white-font">Planning Made Easy</div>
                 <hr>
-                <p class="white-font medium-font-size">Click once if you're free, and twice if you're busy</p>
+                <p class="white-font medium-font-size">Fill out your calendar to get started</p>
                 <br>
                 <div class="calendarHTML"></div>
                 <br><br>
@@ -71,48 +70,66 @@
                 <div class="eventbtn"></div>
             </div>
         </div>
-        <div class="row event-chosen">
-            <div class="col-md-6 eventDisplay">
+        <div class="event-chosen">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary go-to-calendar">Go Back to Calendar</button>
+                </div>
             </div>
-            <div class="col-md-6">
-                <div class="header text-center">Weather<div class="header">
-                        <hr>
-                        <div>
-                            <img class="weather-icon" src="./assets/images/weather.png" alt="Weather Icon">
-                            <div class="weather-display">
+            <div class="row">
+                <div class="col-md-6 eventDisplay">
+                </div>
+                <div class="col-md-6 text-center white-font lead">
+                    <div class="header">Weather for <span class="event-time"></span></div>
+                    <hr>
+                    <div>
+                        <img class="weather-icon" src="./assets/images/weather.png" alt="Weather Icon">
+                        <div class="weather-display row">
+                            <div class="col-md-4 morning-weather">
+                                7AM
+                                <hr>
+                            </div>
+                            <div class="col-md-4 afternoon-weather">
+                                Noon
+                                <hr>
+                            </div>
+                            <div class="col-md-4 evening-weather">
+                                10PM
+                                <hr>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Below are the modals for user input validation on login and zip input -->
-        <div class="login-modal modal">
-            <div class="modal-content">
-                <p>Please use the email format using both " @ " and " . ". Also, please ensure your password is at
-                    least 6 letters long.</p>
-                <button class="btn modal-close login-close">Close</button>
-            </div>
+    <!-- Below are the modals for user input validation on login and zip input -->
+    <div class="login-modal modal">
+        <div class="modal-content">
+            <p>Please use the email format using both " @ " and " . ". Also, please ensure your password is at
+                least 6 letters long.</p>
+            <button class="btn modal-close login-close">Close</button>
         </div>
+    </div>
 
-        <div class="name-zip-modal modal">
-            <div class="modal-content">
-                <p>Your Zip must contain 5 numeric characters</p>
-                <button class="btn modal-close name-zip-close">Close</button>
-            </div>
+    <div class="name-zip-modal modal">
+        <div class="modal-content">
+            <p>Your Zip must contain 5 numeric characters</p>
+            <button class="btn modal-close name-zip-close">Close</button>
         </div>
+    </div>
 
-        <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
-            crossorigin='anonymous'></script>
-        <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
-        <script src="assets/login.js"></script>
-        <script src="assets/fralendar.js"></script>
-        <script src="assets/ticketmaster.js"></script>
-        <script src="assets/eventful.js"></script>
-        <script src="assets/darksky.js"></script>
-        <script src="assets/freeTimeSubmit.js"></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
+        crossorigin='anonymous'></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+    <script src="assets/login.js"></script>
+    <script src="assets/fralendar.js"></script>
+    <script src="assets/ticketmaster.js"></script>
+    <script src="assets/eventful.js"></script>
+    <script src="assets/darksky.js"></script>
+    <script src="assets/events.js"></script>
 </body>
 
 </html>

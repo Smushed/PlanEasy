@@ -6,7 +6,7 @@
 body {
   height: 100vh;
   background: rgb(167,167,167);
-  background: linear-gradient(180deg, #3798D4 58.5%,rgba(255,255,255,1) 41.5%);
+  background: linear-gradient(180deg, #3798D4 700px,rgba(255,255,255,1) 25%);
 }
 .white-font {
   color: white;
@@ -66,6 +66,10 @@ input {
   float: left;
   font-size: 30px;
 }
+.greeting {
+  font-size: 50px;
+  font-weight: 600;
+}
 .location-display {
   width: 45%;
   float: left;
@@ -77,7 +81,7 @@ input {
   overflow: hidden;
 }
 .logout {
-  margin-top: 10px;
+  margin-top: 45px;
   float: right;
   margin-right: 10px;
 }
@@ -86,8 +90,6 @@ input {
 }
 .weather-icon {
   height: 150px;
-  margin-left: 50%;
-  transform: translateX(-50%)
 }
 .welcome-image {
   border-radius: 10px;

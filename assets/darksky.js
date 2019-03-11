@@ -4,63 +4,61 @@ var CORS = "https://cors-anywhere.herokuapp.com/";
 
 // Array for getting current day and next 6 days
 
-console.log(weatherDay)
-
-var weatherTime = eventfulStartTime;
-weatherTime = eventfulStartTime
-    .split(" - ")
-    .map(function (date) {
-        return Date.parse(date + "-0500") / 1000;
-    })
-    .join(" - ");
-
 //Set Lat and Long for venue as variables for weather API calls
+const getWeather = (chosenTime) => {
 
+    $(`.event-time`).html(chosenTime.slice(0, 10))
 
-//Dark Sky Api Format
-//Needs to be lat , long , Unix time (this includes both date and time in its value)
-// https://cors-anywhere.herokuapp.com/
-const apiKey = `1408b38a9701141fa75c8f041fca27e8`;
-const latitude = 41.88287;
-const longitude = -87.64355;
-const unixTime = weatherTime;
-const dark_Sky_api_call = `${CORS}https://api.darksky.net/forecast/${apiKey}/${latitude},${longitude},${unixTime}`;
+    var momentTime = moment(chosenTime, `M/D/YYYY H:MM`);
+    var unixTime = moment().unix(momentTime);
+    //Dark Sky Api Format
+    //Needs to be lat , long , Unix time (this includes both date and time in its value)
+    // https://cors-anywhere.herokuapp.com/
+    const apiKey = `1408b38a9701141fa75c8f041fca27e8`;
+    const latitude = 41.88287;
+    const longitude = -87.64355;
+    const dark_Sky_api_call = `${CORS}https://api.darksky.net/forecast/${apiKey}/${latitude},${longitude},${unixTime}`;
 
-//Run the Weather Api
-$.ajax({
-    type: "GET",
-    url: dark_Sky_api_call
-}).then(function (response) {
-    //log the queryURL
+    //Run the Weather Api
+    $.ajax({
+        type: "GET",
+        url: dark_Sky_api_call
+    }).then(function (response) {
+        //log the queryURL
+        //log the result and specific paramters
 
-    //log the result and specific paramters
-    var temp = response.currently.temperature + "°F";
+        const hourlyWeather = [7, 12, 18]
 
-    var weatherSummary = response.currently.summary;
+        for (let i = 0; i < hourlyWeather.length; i++) {
+            const summaryRow = $(`<div>`);
+            summaryRow.addClass([`row`])
 
-    var precipProbability =
-        response.currently.precipProbability * 100 + "%";
+            const summaryDiv = $(`<div>`);
+            summaryDiv.addClass(`col-md-12`);
+            summaryDiv.html(`${response.hourly.data[i].summary}`);
 
-    // create span to append weather summary value to from array
-    var summaryspan = $("<div>");
-    summaryspan.addClass("col-md-12");
-    summaryspan.html("The Weather Will Be " + weatherSummary);
-    // append name to row
-    $(divRowSummary).append(summaryspan);
+            const tempDiv = $(`<div>`);
+            tempDiv.addClass(`col-md-12`);
+            tempDiv.html(`Temperature: ${response.hourly.data[i].temperature}°F`);
 
-    // create span to append Temperature value to from array
-    var tempspan = $("<div>");
-    tempspan.addClass("col-md-12");
-    tempspan.text("Temperature: " + temp);
-    // append name to row
-    $(divRowTemp).append(tempspan);
+            const rainDiv = $(`<div>`);
+            rainDiv.addClass(`col-md-12`);
+            rainDiv.html(`Chance of Rain: ${Math.floor(response.hourly.data[i].precipProbability * 100)}%`)
 
-    // create span to append chance of rain value to from array
-    var rainspan = $("<div>");
-    rainspan.addClass("col-md-12");
-    rainspan.text("There is a " + precipProbability + " chance of rain");
-    // append name to row
-    $(divRowPrecip).append(rainspan);
+            if (i === 0) {
+                $(`.morning-weather`).append(summaryDiv);
+                $(`.morning-weather`).append(tempDiv);
+                $(`.morning-weather`).append(rainDiv);
+            } else if (i === 1) {
+                $(`.afternoon-weather`).append(summaryDiv);
+                $(`.afternoon-weather`).append(tempDiv);
+                $(`.afternoon-weather`).append(rainDiv);
+            } else {
+                $(`.evening-weather`).append(summaryDiv);
+                $(`.evening-weather`).append(tempDiv);
+                $(`.evening-weather`).append(rainDiv);
+            };
+        };
+    });
 
-
-});
+};
