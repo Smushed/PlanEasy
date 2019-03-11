@@ -1,0 +1,20 @@
+.eventDiv {
+    float: left;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 210px;
+    background: white;
+    border: 2px solid black;
+    margin-top: 5px;
+    padding-top: 25px;
+}
+.eventImg {
+    float: left;
+    height: 115px;
+    width: 115px;
+    margin-top: 2px;
+}
+.go-to-calendar {
+    transform: translateY(-52px)
+}

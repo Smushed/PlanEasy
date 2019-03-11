@@ -4,9 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Fralendar - Connecting you with friends</title>
-
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>PlanEasy - Connecting you with friends</title>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Shrikhand" rel="stylesheet">
     <link rel="stylesheet" href="assets/bootstrap.min.css">
@@ -21,22 +19,23 @@
     <!-- Welcome Message that displays when the user isn't logged in -->
     <div id="fralendar-welcome">
         <div class="container text-center">
-            <h1 class="display-3 text-center">Welcome to Fralendar</h1>
-            <p class="lead">Fralendar connects you and your friends by matching your free time and helping
-                fill
-                it with
-                great local events. No more endless group texts.</p>
+            <img class="welcome-image" src="./assets/images/homepage.jpg" alt="Welcome Image">
+            <h1 class="lead greeting white-font text-center">Welcome to PlanEasy</h1>
+            <p class="lead white-font">PlanEasy connects you and your friends by matching your free time and helping fill it with great local events.
+                No more endless group texts.</p>
             <hr>
-            <p>Sign-in below, and let the good times roll!</p>
+            <p class="white-font">Sign-in below, and let the good times roll!</p>
         </div>
         <p class="lead">
             <div class="login-form text-center">
-                <input class="email" placeholder="Email">
-                <input class="password" type="password" placeholder="Password">
-                <br>
-                <br>
-                <button class="signin btn btn-success">Sign In</button>
-                <button class="register btn btn-success">Register</button>
+                <form>
+                    <input class="email" placeholder="Email">
+                    <input class="password" type="password" placeholder="Password">
+                    <br>
+                    <br>
+                    <button class="submit signin btn btn-success">Sign In</button>
+                    <button class="register btn btn-success">Register</button>
+                </form>
             </div>
         </p>
     </div>
@@ -44,12 +43,12 @@
     <!-- This displays when the user is logged in -->
     <!-- Nav Bar -->
     <div class="navbar mp-reset">
-        <h3 class="welcome-message"> Welcome, <span class="name-display"></span>!</h3>
+        <div class="welcome-message"> <img class="logo" src="./assets/images/calendar-icon.png" alt="Icon"></div>
         <button class="logout btn btn-secondary">Logout</button>
     </div>
 
     <!-- This shows if the current user doesn't have a zip associated with them -->
-    <div class="input-name-zip">
+    <div class="input-name-zip white-font">
         Please input your name and zip code:
         <input class="name-input" placeholder="Name">
         <input class="zip-input" placeholder="Zip">
@@ -58,27 +57,49 @@
 
     <!-- This is the display for the user to input their free time -->
     <div class="container-fluid calendar-events">
-        <div class="row">
-            <div class="col-md-6 text-center">
-                <h3>Fill out your calendar to get started</h3>
-                <h6>Click once if you're free, and twice if you're busy</h6>
-                <hr><br>
+        <div class="row no-event-chosen">
+            <div class="col-md-12 text-center">
+                <div class="header white-font">Planning Made Easy</div>
+                <hr>
+                <p class="white-font medium-font-size">Fill out your calendar to get started</p>
+                <br>
                 <div class="calendarHTML"></div>
                 <br><br>
                 <hr>
-                <p class="lead"> Pick a time to schedule your events and let your friends know.</p>
-            </div>
-            <div class="col-md-1">
+                <p class="medium-font-size"> Pick a time to schedule your events and let your friends know.</p>
                 <div class="eventbtn"></div>
             </div>
-            <div class="col-md-5">
-                <h3 class="text-center">Weather</h3>
-                <br>
-                <hr>
-            </div>
         </div>
-        <div class="row">
-            <div class="eventDisplay">
+        <div class="event-chosen">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary go-to-calendar">Go Back to Calendar</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 eventDisplay">
+                </div>
+                <div class="col-md-6 text-center white-font lead">
+                    <div class="header">Weather for <span class="event-time"></span></div>
+                    <hr>
+                    <div>
+                        <img class="weather-icon" src="./assets/images/weather.png" alt="Weather Icon">
+                        <div class="weather-display row">
+                            <div class="col-md-4 morning-weather">
+                                7AM
+                                <hr>
+                            </div>
+                            <div class="col-md-4 afternoon-weather">
+                                Noon
+                                <hr>
+                            </div>
+                            <div class="col-md-4 evening-weather">
+                                10PM
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -107,6 +128,8 @@
     <script src="assets/fralendar.js"></script>
     <script src="assets/ticketmaster.js"></script>
     <script src="assets/eventful.js"></script>
+    <script src="assets/darksky.js"></script>
+    <script src="assets/events.js"></script>
 </body>
 
 </html>

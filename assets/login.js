@@ -16,6 +16,7 @@ firebase.initializeApp(config);
 
 //Login Event
 $(".signin").on("click", e => {
+    event.preventDefault();
     //Pulls the user input
     const email = $(".email").val();
     const pass = $(".password").val();
@@ -37,6 +38,7 @@ $(".signin").on("click", e => {
 
 //Signup Event
 $(".register").on("click", e => {
+    event.preventDefault();
     //Pulls the user input
     const email = $(".email").val();
     const pass = $(".password").val();
@@ -54,7 +56,7 @@ $(".register").on("click", e => {
     } else {
         showLoginModal();
         clearInputForms();
-    }
+    };
 });
 
 $(".logout").on("click", e => {
@@ -160,6 +162,7 @@ function displayLoggedIn() {
     $("#fralendar-intro").hide();
     $(".Calendar").show();
     $(".eventbtn").show();
+    $(`.event-chosen`).hide();
 };
 
 function displayLoggedOut() {
@@ -177,6 +180,7 @@ function displayLoggedOut() {
     $("#fralendar-intro").show();
     $(".Calendar").hide();
     $(".eventbtn").hide();
+    $(`.event-chosen`).hide();
 };
 
 function getNameAndZip() {

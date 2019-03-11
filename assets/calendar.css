@@ -21,9 +21,10 @@
     -ms-user-select: none;
     user-select: none;
     cursor: pointer;
-    height: 55px;
-    margin-left:10px;
-    margin-top: 5px;
+    height: 95px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .blank-time {
@@ -35,22 +36,24 @@
     padding-right: 5px;
     border-radius: 5px;
     font-weight: 600;
-    border: 2px solid black;
+    border: 2px solid #999B9E;
     white-space: pre-line;
+    background: white;
 }
 .morning {
-    background-image: url('./images/sunrise.jpg');
+    background-image: url('./images/morning.jpg');
+    background-repeat: no-repeat;
+    background-size: 150%;
+    background-size: contain;
+}
+.afternoon {
+    background-image: url('./images/afternoon.jpg');
     background-repeat: no-repeat;
     background-size: 105%;
     background-size: contain;
 }
-.afternoon {
-    background-image: url('./images/fullSun.jpg');
-    background-repeat: no-repeat;
-    background-size: contain;
-}
 .night {
-    background-image: url('./images/moon.jpg');
+    background-image: url('./images/evening.jpg');
     background-size: 105%;
     background-repeat: no-repeat;
     background-size: contain;

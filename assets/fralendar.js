@@ -9,6 +9,8 @@ const daysOfWeek = [
     moment().add(2, `days`).format(`dddd`),
     moment().add(3, `days`).format(`dddd`),
     moment().add(4, `days`).format(`dddd`),
+    moment().add(5, `days`).format(`dddd`),
+    moment().add(6, `days`).format(`dddd`),
 ];
 
 //array for getting current date and next 6 dates
@@ -18,6 +20,8 @@ const dayNum = [
     moment().add(2, `days`).date(),
     moment().add(3, `days`).date(),
     moment().add(4, `days`).date(),
+    moment().add(5, `days`).date(),
+    moment().add(6, `days`).date(),
 ];
 
 const timeStamps = [6, 12, 18];
@@ -31,15 +35,30 @@ secondRowDiv.attr({ "id": `secondRow` });
 secondRowDiv.addClass([`row`, `text-center`]);
 
 // With 4 slot remaing in columns this div will be used for calendar purposes
-secondRowDiv.prepend(`<div class="col-md-1"></div>`);
+secondRowDiv.prepend(`<div class="col-md-2"></div>`);
 
 // Loop to dynamically create of dates
 
 for (let j = 0; j < dayNum.length; j++) {
     const dayOfTheWeek = $(`<div>`);
-    dayOfTheWeek.addClass([`day`, `col-md-2`]);
+    dayOfTheWeek.addClass([`day`, `col-md-1`]);
+
     // this will dynamically give us text for current day + next 6 days
-    dayOfTheWeek.html(`${daysOfWeek[j]} \n ${dayNum[j]}`);
+    // Switch statement will update to give the proper suffix for the date
+    switch (dayNum[j]) {
+        case 1 || 21 || 31:
+            dayOfTheWeek.html(`${daysOfWeek[j]} \n ${dayNum[j]}st`);
+            break;
+        case 2 || 22:
+            dayOfTheWeek.html(`${daysOfWeek[j]} \n ${dayNum[j]}nd`);
+            break;
+        case 3 || 23:
+            dayOfTheWeek.html(`${daysOfWeek[j]} \n ${dayNum[j]}rd`);
+            break;
+        default:
+            dayOfTheWeek.html(`${daysOfWeek[j]} \n ${dayNum[j]}th`);
+            break;
+    }
 
     //loop to generate the 3 buttons in our dates
     for (let k = 0; k < 3; k++) {
@@ -158,10 +177,14 @@ const getUserFreeTimeArray = () => {
         for (let i = 0; i < friendFreeTimeArray.length; i++) {
             //This checks if the free time that you've selected lines up with any one of your friends free times
             //The and statment checks if that button has already been written to the dom
-            if (userFreeTimeArray.includes(friendFreeTimeArray[i]) && !writtenFreeTime.includes(friendFreeTimeArray[i])) {
+
+            // Checks if the free time is before right now. If so it doesn't write it to the screen
+            const timeCompare = moment().isBefore(friendFreeTimeArray[i]);
+
+            if (userFreeTimeArray.includes(friendFreeTimeArray[i]) && timeCompare && !writtenFreeTime.includes(friendFreeTimeArray[i])) {
                 writtenFreeTime.push(friendFreeTimeArray[i]);
                 const eventBtn = $(`<button>`)
-                eventBtn.addClass([`SimilarFreeTime`, `btn`, `btn-success`])
+                eventBtn.addClass([`SimilarFreeTime`, `btn`, `btn-primary`])
                 eventBtn.attr({
                     value: friendFreeTimeArray[i].slice(0, 16)
                 })
