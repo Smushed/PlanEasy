@@ -3,7 +3,7 @@
 <strong>Deployed at:</strong> https://smushed.github.io/PlanEasy/<br/>
 <strong>Title:</strong> PlanEasy<br />
 <strong>Developers:</strong> Kevin Flerlage<br />
-<strong>Last Update:</strong> 03/11/2019<br />
+<strong>Last Update:</strong> 03/12/2019<br />
 <strong>Developed With:</strong> HTML, Javascript, Firebase<br/>
 
 ## **About This App**
