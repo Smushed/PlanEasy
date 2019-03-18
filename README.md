@@ -41,6 +41,20 @@ If the freetime they indicated matches with another user's freetime then a butto
 <br />
 To go back to the calendar if they decide they don't want an event on that day, they press the button located on the top of the screen.
 
+## History
+
+This app began as the first project for the August 2018 Northwestern Full Stack Bootcamp. We were assigned into a group of 4 and were able to create the app we desired. We chose a planning app which allowed users to connect with friends and find plans.
+<br />
+<br />
+Within the group I was a back end developer. After building the login and database integration I assisted in having the webpage talk to the back end.
+<br />
+<br />
+Original App: https://sergio23jr.github.io/Fralendar/.
+<br />
+Username: test1@gmail.com
+<br />
+Password: 111111
+
 ## Future Developments
 
 In development is moving this application from a single page web app to an app utilizing the full MERN stack. Please see below for the current known issues and goals of the project. 
